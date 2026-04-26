@@ -1,13 +1,181 @@
 <!DOCTYPE html>
-<html lang="js">
+<html lang="ja">//js→ja
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIパスポート ToDo管理</title>
-    <link rel="stylesheet" href="sytle.css"
+
+    <!-- CSS:  CSS担当の仕事
+     対象：
+     ・body（全体背景）
+     ・.container（2カラムレイアウト）
+     ・.task-section（左側）
+     ・.side-section（右側）
+     ・.chapter（カードUI）
+     ・.progress-bar（進捗バー）
+     ・.done（完了状態）-->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
+   <!-- =========================
+         ヘッダー
+         CSS担当：
+        ・中央配置
+        ・背景色
+       　JS：使用なし
+         ========================= -->
+   <header>
+        <h1>ToDo管理</h1>
+   </header>
+
+
+   <!-- =========================
+         タスク入力エリア
+         JS対象（重要）：
+ 　　　　・#form submitイベント
+ 　　　　・#input（タスク名）
+ 　　　　・#date（期限）
+ 　　　　・#chapter（追加先の章判定）
+ 　　　　・#size（表示用クラス）
+ 　　　　CSS対象：
+ 　　　　・横並びレイアウト
+         ========================= -->
+   <section class="input-area">
+
+        <!-- JSはformで取得(このform送信でタスク追加処理を実行) -->
+        <form id="form">
+
+            <!-- JS: この入力値を取得して新しいタスクを作る -->
+            <input
+                type="text"
+                id="input"
+                placeholder="タスクを入力"
+                required
+            >
+
+             <!-- JS：日付取得（任意） -->
+            <input type="date" id="date">
+
+             <!-- JS：どの章に入れるか判断 -->
+            <select id="chapter">
+                <option value="1">1章</option>
+                <option value="2">2章</option>
+                <option value="3">3章</option>
+                <option value="4">4章</option>
+                <option value="5">5章</option>
+            </select>
+
+             <!-- JS：タスクサイズの取得 -->
+            <select id="size">
+                <option value="small">小</option>
+                <option value="medium">中</option>
+                <option value="large">大</option>
+            </select>
+
+            <!-- JS: クリック or Enterでタスク追加処理 -->
+            <button type="submit" id="btn">
+                追加
+            </button>
+
+        </form>
+
+    </section>
+
+<!-- =========================
+     メインレイアウト（CSS重要）
+     CSS担当：
+     ・左右2カラム（flex）
+     ・幅比率設定
+========================= -->
+<main class="container">
+
+    <!-- =========================
+         左：タスク一覧エリア
+         JS担当：
+         ・ここにliを追加する
+         ・chapterごとに振り分け
+    ========================= -->
+    <section class="task-section">
+
+        <!-- ===== 1章 ===== -->
+        <div class="chapter" data-chapter="1">
+            <h3>1章</h3>
+
+            <!-- JS：完了率計算 -->
+            <div class="progress-bar"></div>
+
+            <!-- JS：ここにタスク追加 -->
+            <ul class="list"></ul>
+        </div>
+
+        <!-- ===== 2章 ===== -->
+        <div class="chapter" data-chapter="2">
+            <h3>2章</h3>
+            <div class="progress-bar"></div>
+            <ul class="list"></ul>
+        </div>
+
+        <!-- ===== 3章 ===== -->
+        <div class="chapter" data-chapter="3">
+            <h3>3章</h3>
+            <div class="progress-bar"></div>
+            <ul class="list"></ul>
+        </div>
+
+        <!-- ===== 4章 ===== -->
+        <div class="chapter" data-chapter="4">
+            <h3>4章</h3>
+            <div class="progress-bar"></div>
+            <ul class="list"></ul>
+        </div>
+
+        <!-- ===== 5章 ===== -->
+        <div class="chapter" data-chapter="5">
+            <h3>5章</h3>
+            <div class="progress-bar"></div>
+            <ul class="list"></ul>
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         右：サイドエリア
+         JS担当：
+         ・カレンダー生成
+         ・タイムライン生成
+         CSS対象：
+     　　・サイド固定 or 幅調整
+    ========================= -->
+    <section class="side-section">
+
+        <!-- JS：カレンダー描画 -->
+        <div class="calendar">
+            <h2>カレンダー</h2>
+        </div>
+
+        <!-- JS：時間軸生成 -->
+        <div class="timeline">
+            <h2>タイムライン</h2>
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     JS担当の仕事（全部ここ）
+     ・タスク追加
+     ・削除ボタン
+     ・チェック管理
+     ・progress-bar更新
+     ・chapter振り分け
+========================= -->
+
     <script src="script.js"></script>
+
 </body>
 </html>
