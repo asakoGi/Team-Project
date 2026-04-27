@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIパスポート ToDo管理アプリ</title>
+
+     <!-- CSSファイル読み込み -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- ページ上部のタイトル -->
     <header class="topbar">
         <h1 class="topbar-title">Overview</h1>
     </header>
 
+    <!-- サイドメニュー（各エリアへ移動） -->
     <aside class="sidebar" aria-label="サイドメニュー">
+
+        <!-- ロゴ表示 -->
         <div class="sidebar-logo" aria-label="AIパスポート ToDo管理アプリ">
             <i class="fi fi-sr-layers"></i>
         </div>
 
+        <!-- ページ内リンク -->
         <nav class="sidebar-menu">
             <a href="#taskInputArea" class="sidebar-link" aria-label="タスク入力">
                 <i class="fi fi-rr-edit"></i>
@@ -32,20 +40,25 @@
         </nav>
     </aside>
 
+    <!-- メインコンテンツ -->
     <main class="main">
         <h2 class="page-title">AIパスポート ToDo管理アプリ</h2>
 
+        <!-- タスク入力エリア -->
         <section id="taskInputArea" class="task-input-area">
             <h3 class="section-title">タスク入力</h3>
 
+            <!-- タスク名入力 -->
             <div class="input-group">
                 <label class="input-label" for="taskTitle">タスク（タイトル）</label>
                 <input type="text" id="taskTitle" class="task-title-input" placeholder="例：1章 セクション1を読む">
             </div>
 
+            <!-- 詳細入力エリア -->
             <div class="property-area">
                 <h4 class="property-title">プロパティ入力</h4>
 
+                <!-- 実行日 -->
                 <div class="property-row">
                     <label class="property-label" for="executeDate">
                         <i class="fi fi-ss-calendar" aria-hidden="true"></i>
@@ -54,6 +67,7 @@
                     <input type="date" id="executeDate" class="property-input">
                 </div>
 
+                <!-- 実行時間 -->
                 <div class="property-row">
                     <label class="property-label" for="executeTime">
                         <i class="fi fi-sr-alarm-clock" aria-hidden="true"></i>
@@ -62,6 +76,7 @@
                     <input type="time" id="executeTime" class="property-input">
                 </div>
 
+                <!-- 期限 -->
                 <div class="property-row">
                     <label class="property-label" for="deadlineDate">
                         <i class="fi fi-sr-calendar" aria-hidden="true"></i>
@@ -70,6 +85,7 @@
                     <input type="date" id="deadlineDate" class="property-input">
                 </div>
 
+                <!-- 章選択 -->
                 <div class="property-row">
                     <label class="property-label" for="chapterSelect">
                         <i class="fi fi-sr-layers" aria-hidden="true"></i>
@@ -86,6 +102,7 @@
                     </select>
                 </div>
 
+                <!-- セクション選択 -->
                 <div class="property-row">
                     <label class="property-label" for="sectionSelect">
                         <i class="fi fi-rr-layers" aria-hidden="true"></i>
@@ -98,20 +115,27 @@
                         <option value="3">セクション3</option>
                         <option value="4">セクション4</option>
                         <option value="5">セクション5</option>
+                        <option value="6">セクション6</option>
                     </select>
                 </div>
 
+                <!-- タスク追加ボタン -->
                 <button type="button" id="addTaskButton" class="add-button">タスクを追加</button>
             </div>
         </section>
 
+        <!-- 表示エリア（一覧・カレンダー・時間） -->
         <section class="dashboard">
+
+            <!-- タスク一覧 -->
             <section id="taskListArea" class="task-list-area">
                 <h3 class="section-title">タスク一覧</h3>
                 <div id="taskList" class="task-list"></div>
             </section>
 
             <div class="right-panel">
+
+                <!-- カレンダー表示 -->
                 <section id="calendarArea" class="calendar-area">
                     <h3 class="section-title">カレンダー（1か月）</h3>
 
@@ -130,6 +154,7 @@
                     </div>
                 </section>
 
+                <!-- タイムライン表示 -->
                 <section id="timelineArea" class="timeline-area">
                     <h3 class="section-title" id="timelineTitle">タイムライン（24時間）</h3>
 
@@ -143,6 +168,7 @@
         </section>
     </main>
 
+    <!-- JavaScript読み込み -->
     <script src="script.js"></script>
 </body>
 </html>
