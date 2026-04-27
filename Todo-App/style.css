@@ -1,0 +1,838 @@
+@import url("https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-straight/css/uicons-solid-straight.css");
+@import url("https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css");
+@import url("https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css");
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700&family=Nunito:wght@400;500;600;700;800&display=swap");
+
+/* ============================================ */
+/* 全体設定                                      */
+/* ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* ← 枠外へのはみ出しを防止 */
+}
+
+body {
+    font-family: "M PLUS Rounded 1c", "Nunito", "Hiragino Maru Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    color: #151515;
+    line-height: 1.6;
+    background:
+        radial-gradient(circle at top left, rgba(74, 144, 226, 0.18), transparent 32%),
+        linear-gradient(135deg, #edf6ff 0%, #f7fbff 48%, #eaf3ff 100%);
+}
+
+/* ============================================ */
+/* トップバー・サイドバー                         */
+/* ============================================ */
+
+.topbar {
+    position: fixed;
+    top: 36px;
+    left: 128px;
+    width: calc(100% - 168px);
+    height: 72px;
+    padding: 0 34px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #f1f3f6;
+    border-radius: 0 28px 0 0;
+    z-index: 100;
+}
+
+.topbar-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #101010;
+    letter-spacing: -0.03em;
+}
+
+.sidebar {
+    position: fixed;
+    top: 36px;
+    left: 40px;
+    width: 88px;
+    height: calc(100vh - 72px);
+    padding: 26px 0;
+    background: linear-gradient(180deg, #171717 0%, #101010 100%);
+    border-radius: 28px 0 0 28px;
+    box-shadow: 0 24px 60px rgba(18, 35, 56, 0.18);
+    z-index: 110;
+}
+
+.sidebar-logo {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    color: #111111;
+    background-color: #fff8d8;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+}
+
+.sidebar-logo i {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.sidebar-menu {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.sidebar-link {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.62);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.sidebar-link:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-link i {
+    font-size: 19px;
+    line-height: 1;
+}
+
+/* ============================================ */
+/* メインレイアウト（スクロール固定）              */
+/* ============================================ */
+
+.main {
+    position: fixed;               /* ← 固定配置 */
+    top: 108px;
+    left: 128px;
+    right: 40px;
+    bottom: 36px;
+    padding: 28px 34px 24px;
+    background-color: rgba(255, 255, 255, 0.96);
+    border-radius: 0 0 28px 0;
+    box-shadow: 0 24px 60px rgba(18, 35, 56, 0.18);
+    overflow-y: auto;              /* ← 内部だけスクロール */
+    overflow-x: hidden;
+}
+
+/* メイン内スクロールバー */
+.main::-webkit-scrollbar { width: 5px; }
+.main::-webkit-scrollbar-track { background: transparent; }
+.main::-webkit-scrollbar-thumb { background: #d0d5e0; border-radius: 10px; }
+
+.page-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 22px;
+    color: #101010;
+    letter-spacing: -0.02em;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    color: #111111;
+    text-align: left;
+    letter-spacing: -0.02em;
+}
+
+.task-input-area,
+.task-list-area,
+.calendar-area,
+.timeline-area {
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 22px;
+    border: none;
+    box-shadow: 0 14px 35px rgba(21, 35, 56, 0.08);
+}
+
+.task-input-area {
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #ffffff 0%, #f9fbff 100%);
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: minmax(420px, 1.15fr) minmax(340px, 0.85fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ============================================ */
+/* 入力エリア                                    */
+/* ============================================ */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #2b2f36;
+}
+
+.task-title-input,
+.property-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    font-family: "M PLUS Rounded 1c", "Nunito", "Hiragino Maru Gothic ProN", sans-serif;
+    color: #151515;
+    background-color: #f8fafc;
+    border: 1px solid #edf0f4;
+    border-radius: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.task-title-input:focus,
+.property-input:focus {
+    background-color: #ffffff;
+    border-color: #9bc8f7;
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.12);
+}
+
+.property-area {
+    padding-top: 20px;
+    border-top: 1px solid #eef1f5;
+}
+
+.property-title {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 800;
+    color: #2b2f36;
+}
+
+.property-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.property-label {
+    width: 180px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #2b2f36;
+}
+
+.property-label i {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #111111;
+    font-size: 15px;
+    line-height: 1;
+    background-color: #f1f6ff;
+    border-radius: 10px;
+}
+
+.add-button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    font-family: "M PLUS Rounded 1c", "Nunito", sans-serif;
+    background-color: #111111;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.add-button:hover {
+    background-color: #2a2a2a;
+    transform: translateY(-1px);
+}
+
+/* ============================================ */
+/* タスク一覧                                    */
+/* ============================================ */
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chapter-group {
+    padding: 16px;
+    background-color: #f8fafc;
+    border: none;
+    border-radius: 18px;
+}
+
+.chapter-group.other-group {
+    background-color: #fff7e8;
+}
+
+.chapter-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.chapter-title {
+    min-width: 50px;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.chapter-title.other-title {
+    min-width: 70px;
+    color: #b8741a;
+}
+
+/* ============================================ */
+/* プログレスバー（色分け）                       */
+/* ============================================ */
+
+.progress-bar-wrap {
+    flex: 1;
+    height: 9px;
+    background-color: #e9edf3;
+    border-radius: 999px;
+    overflow: visible;           /* ← 最小幅を見せるため */
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    min-width: 6px;              /* ← 0%でも赤が少し見える */
+    border-radius: 999px;
+    background-color: #e85454;  /* デフォルト：赤（0〜25%） */
+    transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+/* JSで data-pct 属性をセットしてもいいが、
+   ここでは幅ごとのクラスで色を切り替える方式をサポート */
+.progress-bar-fill.low  { background-color: #e85454; } /* 0〜25% 赤  */
+.progress-bar-fill.mid  { background-color: #4a90d9; } /* 26〜74% 青 */
+.progress-bar-fill.high { background-color: #52c07a; } /* 75〜100% 緑 */
+
+.progress-percent {
+    min-width: 45px;
+    color: #555;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: right;
+}
+
+/* ============================================ */
+/* タスクアイテム                                */
+/* ============================================ */
+
+.chapter-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 18px rgba(21, 35, 56, 0.05);
+    animation: slideIn 0.22s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* チェックボックス */
+.task-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+    background: #fff;
+    position: relative;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.task-checkbox:hover { border-color: #f5a623; }
+
+.task-checkbox:checked {
+    background: #f5a623;
+    border-color: #f5a623;
+    animation: checkPop 0.28s ease;
+}
+
+@keyframes checkPop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.3); }
+    70%  { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.task-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 1px;
+    width: 8px;
+    height: 5px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+}
+
+.task-title {
+    flex: 1;
+    color: #333;
+    font-size: 14px;
+}
+
+.task-item.done .task-title {
+    color: #999;
+    text-decoration: line-through;
+}
+
+.task-meta {
+    color: #999;
+    font-size: 12px;
+}
+
+/* ============================================ */
+/* 削除ボタン（ホバーで押す感覚）                 */
+/* ============================================ */
+
+.task-delete-button {
+    padding: 5px 10px;
+    color: #ffffff;
+    font-size: 12px;
+    font-family: "M PLUS Rounded 1c", "Nunito", sans-serif;
+    background-color: #111111;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.15s, transform 0.12s, box-shadow 0.15s;
+}
+
+.task-delete-button:hover {
+    background-color: #e85454;
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 6px 16px rgba(232, 84, 84, 0.35);
+    animation: deletePulse 0.22s ease;
+}
+
+.task-delete-button:active {
+    transform: scale(0.94) translateY(0px);
+    box-shadow: 0 2px 6px rgba(232, 84, 84, 0.2);
+}
+
+@keyframes deletePulse {
+    0%   { transform: scale(1.0) translateY(0); }
+    40%  { transform: scale(1.12) translateY(-3px); }
+    100% { transform: scale(1.08) translateY(-2px); }
+}
+
+.no-task-message {
+    padding: 10px;
+    color: #999;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ============================================ */
+/* カレンダー（土日色分け）                       */
+/* ============================================ */
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-title {
+    color: #111111;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.calendar-nav-button,
+.back-to-today-button {
+    color: #111111;
+    background-color: #f8fafc;
+    border: 1px solid #edf0f4;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: "M PLUS Rounded 1c", "Nunito", sans-serif;
+    transition: background-color 0.15s;
+}
+
+.calendar-nav-button { padding: 5px 12px; font-size: 16px; }
+.back-to-today-button { padding: 5px 14px; font-size: 12px; }
+
+.calendar-nav-button:hover,
+.back-to-today-button:hover { background-color: #eef5ff; }
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+/* 曜日ラベル */
+.calendar-weekday {
+    padding: 4px;
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    color: #8a94a3;
+}
+
+.calendar-weekday.sun { color: #e85454; }
+.calendar-weekday.sat { color: #4a90d9; }
+
+/* 日付セル */
+.calendar-day {
+    min-height: 34px;
+    padding: 5px 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: #151515;
+    font-size: 12px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    background: none;
+    font-family: "M PLUS Rounded 1c", "Nunito", sans-serif;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.calendar-day:hover { background-color: #eef5ff; }
+
+/* JSで付与するsun-day / sat-dayクラスで色を確実に当てる */
+.calendar-day.sun-day { color: #e85454; }
+.calendar-day.sat-day { color: #4a90d9; }
+
+.calendar-day.other-month { color: #c6cbd2; }
+
+.calendar-day.today {
+    color: #ffffff !important;
+    font-weight: 800;
+    background-color: #111111;
+}
+
+.calendar-day.today:hover { background-color: #2a2a2a; }
+
+.calendar-day.has-task::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background-color: #f5a623;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.calendar-day.selected {
+    border-color: #27ae60;
+    font-weight: 800;
+}
+
+.calendar-day.today.selected { border-color: #27ae60; }
+
+.calendar-legend {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #666;
+    font-size: 12px;
+}
+
+.legend-mark {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+}
+
+.legend-mark-today { background-color: #111111; }
+
+.legend-mark-task {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+.legend-mark-task::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background-color: #f5a623;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.legend-mark-selected {
+    background-color: #ffffff;
+    border: 2px solid #27ae60;
+}
+
+/* ============================================ */
+/* タイムライン（現在時刻タスクを黄色カード）      */
+/* ============================================ */
+
+.timeline-controls {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.timeline {
+    max-height: 340px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: #f8fafc;
+    border: none;
+    border-radius: 16px;
+}
+
+.timeline::-webkit-scrollbar { width: 4px; }
+.timeline::-webkit-scrollbar-track { background: transparent; }
+.timeline::-webkit-scrollbar-thumb { background: #d0d5e0; border-radius: 4px; }
+
+.timeline-row {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    border-top: 1px solid #eef1f5;
+}
+
+.timeline-row:first-child { border-top: none; }
+
+/* 現在時刻の行をハイライト */
+.timeline-row.current-hour {
+    background-color: rgba(245, 166, 35, 0.07);
+}
+
+.timeline-time {
+    width: 50px;
+    flex-shrink: 0;
+    color: #999;
+    font-size: 12px;
+}
+
+.timeline-tasks {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+/* 通常のタスクバッジ */
+.timeline-task {
+    padding: 5px 12px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: "M PLUS Rounded 1c", "Nunito", sans-serif;
+    background-color: #111111;
+    border-radius: 999px;
+    transition: transform 0.15s;
+}
+
+/* 現在時刻のタスク：黄色いカード（画像2スタイル） */
+.timeline-task.current-task {
+    background: linear-gradient(135deg, #f5a623 0%, #f0c040 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 800;
+    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.38);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: cardPop 0.3s ease;
+    width: 100%;
+}
+
+@keyframes cardPop {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.timeline-task.current-task::before {
+    content: "▶";
+    font-size: 10px;
+    opacity: 0.85;
+}
+
+.timeline-task.no-time {
+    background-color: #8a94a3;
+}
+
+/* ============================================ */
+/* レスポンシブ                                  */
+/* ============================================ */
+
+@media (max-width: 980px) {
+    .topbar {
+        left: 0;
+        top: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .sidebar { display: none; }
+
+    .main {
+        top: 72px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+
+    .dashboard { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+    .main { padding: 18px; }
+
+    .property-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .property-label { width: auto; }
+
+    .task-item {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+}
+
+/* ============================================ */
+/* プログレスバー色                              */
+/* ============================================ */
+
+.progress-bar-fill.low  { background-color: #e85454; }
+.progress-bar-fill.mid  { background-color: #4a90d9; }
+.progress-bar-fill.high { background-color: #52c07a; }
+
+/* ============================================ */
+/* カレンダー 土日                               */
+/* ============================================ */
+
+.calendar-weekday.sun { color: #e85454; }
+.calendar-weekday.sat { color: #4a90d9; }
+
+.calendar-day.sun-day { color: #e85454; }
+.calendar-day.sat-day { color: #4a90d9; }
+
+/* ============================================ */
+/* タイムライン 現在タスク（青）                  */
+/* ============================================ */
+
+.timeline-task.current-task {
+    background: linear-gradient(135deg, #4a90d9 0%, #6fb3ff 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 8px 14px;
+    font-weight: 800;
+    box-shadow: 0 6px 20px rgba(74,144,217,0.35);
+    width: 100%;
+}
+
+/* ============================================ */
+/* サイドバー ツールチップ                       */
+/* ============================================ */
+
+.sidebar-link {
+    position: relative;
+}
+
+.sidebar-link::after {
+    content: attr(aria-label);
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #111;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.sidebar-link:hover::after {
+    opacity: 1;
+}
